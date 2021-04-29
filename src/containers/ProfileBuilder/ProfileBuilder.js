@@ -8,8 +8,8 @@ import axios from 'axios';
 class ProfileBuilder extends Component{
 
   state = {
-    profile: '',
-    repositories : ''
+    profile: [],
+    repositories : []
   }
   componentDidMount(){
     axios.get('https://api.github.com/users/supreetsingh247').then(resp =>{

@@ -5,11 +5,11 @@ import moment from 'moment';
 class Repositories extends Component{ 
 
     state = {
-      repoData : [],
+    
       text : '',
       lang : '',
       type : '',
-      repoCount : this.props.repositoriesData
+    
     }
         
     render(){
@@ -20,7 +20,7 @@ class Repositories extends Component{
             
             repositorie = this.props.repositoriesData.map(rep =>{
                 
-                this.setState({repoData : rep.data})
+                
                 let lastUpdated = moment(rep.updated_at).fromNow();
                 
                 return(
@@ -35,7 +35,7 @@ class Repositories extends Component{
         }
 
          if(this.state.text){
-            console.log("----------------- "+ this.state.repoCount.name);
+            console.log("----------------- ");
 
           if(this.props.repositoriesData){
             repositorie = this.props.repositoriesData.filter(rep => rep.name.toLowerCase().includes(this.state.text)).map(rep =>{
