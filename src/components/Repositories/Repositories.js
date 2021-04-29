@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import './Repositories.css';
 import moment from 'moment';
 
+class Repositories extends Component{ 
 
-const Repositories =props =>{
-    
-    const[text, setText] = useState('');
-    const[lang, setLang] = useState('');
-  
+    state = {
+      repoData : [],
+      text : '',
+      lang : '',
+      type : '',
+      repoCount : this.props.repositoriesData
+    }
         
+    render(){
+
        let repositorie = 'Something went wrong..!';
         
-       if(props.repositories){
+       if(this.props.repositoriesData){
             
-            repositorie = props.repositoriesData.map(rep =>{
+            repositorie = this.props.repositoriesData.map(rep =>{
                 
+                this.setState({repoData : rep.data})
                 let lastUpdated = moment(rep.updated_at).fromNow();
                 
                 return(
@@ -28,28 +34,29 @@ const Repositories =props =>{
             })
         }
 
-        // if({text}){
-            
-        //   if(props.repositories){
-        //     repositorie = props.repositoriesData.filter(rep => rep.name.toLowerCase().includes({text})).map(rep =>{
+         if(this.state.text){
+            console.log("----------------- "+ this.state.repoCount.name);
+
+          if(this.props.repositoriesData){
+            repositorie = this.props.repositoriesData.filter(rep => rep.name.toLowerCase().includes(this.state.text)).map(rep =>{
                 
-        //         let lastUpdated = moment(rep.updated_at).fromNow();
+                let lastUpdated = moment(rep.updated_at).fromNow();
                 
-        //         return(
-        //           <div key={rep.id} class="repo-items">
-        //           <h2>{rep.name}</h2>
-        //           <p>{rep.description}</p>
-        //           <p class="updated-date">{lastUpdated}</p>
-        //       </div>
-        //         );
+                return(
+                  <div key={rep.id} class="repo-items">
+                    <h2>{rep.name}</h2>
+                    <p>{rep.description}</p>
+                    <p class="updated-date">{lastUpdated}</p>
+                  </div>
+                );
                 
-        //     })
-        //   }
-        // }
+            })
+          }
+        }
 
         // if({lang}){
                 
-        //     repositorie = props.repositoriesData.filter(rep => rep.language.toLowerCase().includes({lang})).map(rep =>{
+        //     repositorie = this.props.repositoriesData.filter(rep => rep.language.toLowerCase().includes({lang})).map(rep =>{
                 
         //         let lastUpdated = moment(rep.updated_at).fromNow();
                 
@@ -73,7 +80,7 @@ const Repositories =props =>{
                   </li>
                   <li>
                       <a href="#news">Repositories
-                          <span class="count">{props.repositoriesData.public_repos}</span></a>
+                          <span class="count">{this.state.repoCount}</span></a>
                   </li>
                   <li>
                       <a href="#contact">Stars
@@ -81,17 +88,18 @@ const Repositories =props =>{
                   </li>
                   <li>
                       <a href="#about">followers
-                          <span class="count">{props.repositoriesData.followers}</span></a>
+                          <span class="count">{this.props.repositoriesData.followers}</span></a>
                   </li>
                   <li>
                       <a href="#about">following
-                          <span class="count">{props.repositoriesData.following}</span></a>
+                          <span class="count">{this.props.repositoriesData.following}</span></a>
                   </li>
               </ul>
             </div>
             <div class="search-bar">
-            <input value={text}
-                onChange={event => setText(event.target.value)} name="search" type="text" />
+
+            <input value= {this.state.text}
+                onChange={(e) => this.setState({ text: e.target.value })} name="search" type="text" />
 
                <select name="type">
                         <option value="">type </option>
@@ -122,6 +130,7 @@ const Repositories =props =>{
           </div>
 
         );
+  }
 }
 export default Repositories;
 
