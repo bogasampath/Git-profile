@@ -3,8 +3,32 @@ import './ProfileBuilder.css';
 import Profile from '../../components/Profile/Profile';
 import Repositories from '../../components/Repositories/Repositories';
 import GitHub from '../../assets/images/GitHub.png';
+import axios from 'axios';
 
 class ProfileBuilder extends Component{
+
+  state = {
+    profile: [],
+    repositories : []
+  }
+  componentDidMount(){
+    axios.get('https://api.github.com/users/supreetsingh247').then(resp =>{
+      
+        if(resp){
+          this.setState({profile : resp.data});
+        }
+      }
+    );
+    
+    axios.get('https://api.github.com/users/supreetsingh247/repos').then(resp =>{
+      
+      if(resp){
+        this.setState({repositories : resp.data});
+      }
+    }
+    );
+
+  }
 
     render(){
         return (
@@ -14,8 +38,8 @@ class ProfileBuilder extends Component{
             </div>
 
             <div class="flex-container">
-              <Profile />
-              <Repositories />
+              <Profile profile = {this.state.profile} />
+              <Repositories repositories = {this.state.repositories}/>
             </div>
 
           </div>

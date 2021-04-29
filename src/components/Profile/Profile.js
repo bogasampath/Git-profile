@@ -4,55 +4,31 @@ import './Profile.css';
 import location from '../../assets/images/location.png';
 import peopleIcon from '../../assets/images/two-people-icon.png';
 
-class Profile extends Component{
+const Profile = props =>{
 
-    state={
-        profile : []
-    }
 
-    componentDidMount(){
-        axios.get('https://api.github.com/users/supreetsingh247').then(resp =>{
-            if(resp){
-            console.log(resp);
-            this.setState({profile : resp.data})
-            }
-        })
-    }
-
-    render(){
 
         let profile = 
             
         <div class="flex-item-left">
-        <img class="profile-img" src={this.state.profile.avatar_url} height="250px" width="250px" />
-        <h1 class="name">{this.state.profile.name}</h1>
-        <p class="id">{this.state.profile.login}</p>
+        <img class="profile-img" src={props.profile.avatar_url} height="250px" width="250px" />
+        <h1 class="name">{props.profile.name}</h1>
+        <p class="id">{props.profile.login}</p>
 
-        <p>{this.state.profile.bio}</p>
+        <p>{props.profile.bio}</p>
 
         <button class="edit-btn" type='button'>Edit bio</button>
 
         <p class="company">
             <span><img src={peopleIcon} width="20px" height="20px" alt="company: " /></span>
-            <span>{this.state.profile.company}</span>
+            <span>{props.profile.company}</span>
         </p>
 
         <p class="location">
             <span><img src={location} alt="location: " width="20px" height="20px" /></span>
-            <span>{this.state.profile.location}</span>
+            <span>{props.profile.location}</span>
         </p>
     </div>
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             
 
         //         <div><img class='img' alt="Avatar" width='50%' height='50%'  src={this.state.profile.avatar_url}></img> </div> 
@@ -77,7 +53,6 @@ class Profile extends Component{
                 {profile}
             </div>
         );
-    }
 }
 
 export default Profile;

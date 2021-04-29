@@ -30,7 +30,8 @@ const Repositories =props =>{
         }
 
         if({text}){
-                
+            
+          if(props.repositories){
             repositorie = props.repositories.filter(rep => rep.name.toLowerCase().includes({text})).map(rep =>{
                 
                 let lastUpdated = moment(rep.updated_at).fromNow();
@@ -44,6 +45,7 @@ const Repositories =props =>{
                 );
                 
             })
+          }
         }
 
         if({lang}){
@@ -72,7 +74,7 @@ const Repositories =props =>{
                   </li>
                   <li>
                       <a href="#news">Repositories
-                          <span class="count">{props.repositories.}</span></a>
+                          <span class="count">{props.repositories.public_repos}</span></a>
                   </li>
                   <li>
                       <a href="#contact">Stars
@@ -80,11 +82,11 @@ const Repositories =props =>{
                   </li>
                   <li>
                       <a href="#about">followers
-                          <span class="count">{this.state.noOfFollowers}</span></a>
+                          <span class="count">{props.repositories.followers}</span></a>
                   </li>
                   <li>
                       <a href="#about">following
-                          <span class="count">{this.state.noOfFollowing}</span></a>
+                          <span class="count">{props.repositories.following}</span></a>
                   </li>
               </ul>
             </div>
