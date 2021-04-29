@@ -31,22 +31,6 @@ const Profile = props =>{
     </div>
             
 
-        //         <div><img class='img' alt="Avatar" width='50%' height='50%'  src={this.state.profile.avatar_url}></img> </div> 
-        //        <div>
-        //        <div style={{fontSize: '18px', paddingTop : '15px'}}><span>{this.state.profile.name}</span></div>
-
-        //        <div style={{fontSize: '14px'}}><span>{this.state.profile.login}</span></div>
-               
-        //        <div style={{paddingTop : '20px'}}>
-        //             <div><button style={{width:'50%'}}>Edit</button></div>
-        //             <div>{this.state.profile.company}</div>
-        //             <div><img style={{width:'16px' ,height:'16px'}} src={location} alt='location: '></img>{this.state.profile.location}</div>
-        //        </div>
-               
-        //         </div>
-        //    </div>
-        //    </div>        
-
         return(
             
             <div>

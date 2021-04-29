@@ -8,8 +8,8 @@ import axios from 'axios';
 class ProfileBuilder extends Component{
 
   state = {
-    profile: [],
-    repositories : []
+    profile: '',
+    repositories : ''
   }
   componentDidMount(){
     axios.get('https://api.github.com/users/supreetsingh247').then(resp =>{
@@ -39,7 +39,7 @@ class ProfileBuilder extends Component{
 
             <div class="flex-container">
               <Profile profile = {this.state.profile} />
-              <Repositories repositories = {this.state.repositories}/>
+              <Repositories repositoriesData = {this.state.repositories}/> 
             </div>
 
           </div>

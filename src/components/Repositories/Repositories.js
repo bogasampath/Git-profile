@@ -13,7 +13,7 @@ const Repositories =props =>{
         
        if(props.repositories){
             
-            repositorie = props.repositories.map(rep =>{
+            repositorie = props.repositoriesData.map(rep =>{
                 
                 let lastUpdated = moment(rep.updated_at).fromNow();
                 
@@ -28,41 +28,41 @@ const Repositories =props =>{
             })
         }
 
-        if({text}){
+        // if({text}){
             
-          if(props.repositories){
-            repositorie = props.repositories.filter(rep => rep.name.toLowerCase().includes({text})).map(rep =>{
+        //   if(props.repositories){
+        //     repositorie = props.repositoriesData.filter(rep => rep.name.toLowerCase().includes({text})).map(rep =>{
                 
-                let lastUpdated = moment(rep.updated_at).fromNow();
+        //         let lastUpdated = moment(rep.updated_at).fromNow();
                 
-                return(
-                  <div key={rep.id} class="repo-items">
-                  <h2>{rep.name}</h2>
-                  <p>{rep.description}</p>
-                  <p class="updated-date">{lastUpdated}</p>
-              </div>
-                );
+        //         return(
+        //           <div key={rep.id} class="repo-items">
+        //           <h2>{rep.name}</h2>
+        //           <p>{rep.description}</p>
+        //           <p class="updated-date">{lastUpdated}</p>
+        //       </div>
+        //         );
                 
-            })
-          }
-        }
+        //     })
+        //   }
+        // }
 
-        if({lang}){
+        // if({lang}){
                 
-            repositorie = props.repositories.filter(rep => rep.language.toLowerCase().includes({lang})).map(rep =>{
+        //     repositorie = props.repositoriesData.filter(rep => rep.language.toLowerCase().includes({lang})).map(rep =>{
                 
-                let lastUpdated = moment(rep.updated_at).fromNow();
+        //         let lastUpdated = moment(rep.updated_at).fromNow();
                 
-                return(
-                  <div key={rep.id} class="repo-items">
-                  <h2>{rep.name}</h2>
-                  <p>{rep.description}</p>
-                  <p class="updated-date">{lastUpdated}</p>
-              </div>
-                );
+        //         return(
+        //           <div key={rep.id} class="repo-items">
+        //           <h2>{rep.name}</h2>
+        //           <p>{rep.description}</p>
+        //           <p class="updated-date">{lastUpdated}</p>
+        //       </div>
+        //         );
                 
-            })
-        }
+        //     })
+        // }
 
         return (
           <div class="flex-item-right">
@@ -73,7 +73,7 @@ const Repositories =props =>{
                   </li>
                   <li>
                       <a href="#news">Repositories
-                          <span class="count">{props.repositories.public_repos}</span></a>
+                          <span class="count">{props.repositoriesData.public_repos}</span></a>
                   </li>
                   <li>
                       <a href="#contact">Stars
@@ -81,17 +81,17 @@ const Repositories =props =>{
                   </li>
                   <li>
                       <a href="#about">followers
-                          <span class="count">{props.repositories.followers}</span></a>
+                          <span class="count">{props.repositoriesData.followers}</span></a>
                   </li>
                   <li>
                       <a href="#about">following
-                          <span class="count">{props.repositories.following}</span></a>
+                          <span class="count">{props.repositoriesData.following}</span></a>
                   </li>
               </ul>
             </div>
             <div class="search-bar">
-               <input type="text" onChange={(e) => setText(e)} 
-                  placeholder="Search repositories..." name="search"></input>
+            <input value={text}
+                onChange={event => setText(event.target.value)} name="search" type="text" />
 
                <select name="type">
                         <option value="">type </option>
