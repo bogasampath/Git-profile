@@ -1,0 +1,38 @@
+.flex-item-left {
+    background-color: white;
+    padding: 10px;
+    padding-left: 130px;
+    flex: 25%;
+  }
+  
+  .profile-img{
+      border-radius: 4px;
+      width: 100%;
+  }
+  
+  .name{
+      margin-bottom: 0;
+  }
+  
+  .id{
+      margin: 0;
+  }
+  
+  .edit-btn{
+      border: 1px solid black;
+      border-radius: 4px;
+      color: black;
+      width: 80%;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  
+  .company .location{
+      vertical-align: baseline;
+  }
+  
