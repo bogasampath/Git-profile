@@ -1,5 +1,4 @@
-import React, { Component, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import './Repositories.css';
 import moment from 'moment';
 
