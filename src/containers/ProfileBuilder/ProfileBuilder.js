@@ -33,11 +33,11 @@ class ProfileBuilder extends Component{
     render(){
         return (
           <div className='body'>
-            <div class="nav-flex-container">
+            <div className="nav-flex-container">
               <a href="#home"><img src={GitHub} alt='Logo' height="40px" width="40px" /></a>
             </div>
 
-            <div class="flex-container">
+            <div className="flex-container">
               <Profile profile = {this.state.profile} />
               <Repositories repositoriesData = {this.state.repositories}/> 
             </div>

@@ -9,7 +9,7 @@ class Repositories extends Component{
       text : '',
       lang : '',
       type : '',
-    
+      followers: ''
     }
         
     render(){
@@ -24,10 +24,10 @@ class Repositories extends Component{
                 let lastUpdated = moment(rep.updated_at).fromNow();
                 
                 return(
-                  <div key={rep.id} class="repo-items">
+                  <div key={rep.id} className="repo-items">
                   <h2>{rep.name}</h2>
                   <p>{rep.description}</p>
-                  <p class="updated-date">{lastUpdated}</p>
+                  <p className="updated-date">{lastUpdated}</p>
               </div>
                 );
                 
@@ -35,18 +35,22 @@ class Repositories extends Component{
         }
 
          if(this.state.text){
-            console.log("----------------- ");
+            console.log("-----------------");
 
           if(this.props.repositoriesData){
             repositorie = this.props.repositoriesData.filter(rep => rep.name.toLowerCase().includes(this.state.text)).map(rep =>{
                 
                 let lastUpdated = moment(rep.updated_at).fromNow();
-                
+                this.setState({followers : rep.language})
                 return(
-                  <div key={rep.id} class="repo-items">
+                  <div key={rep.id} className="repo-items">
                     <h2>{rep.name}</h2>
                     <p>{rep.description}</p>
-                    <p class="updated-date">{lastUpdated}</p>
+                    <p className="updated-date">
+                        {lastUpdated}
+                    </p>
+                    <p>{rep.language}</p>
+                    
                   </div>
                 );
                 
@@ -61,10 +65,10 @@ class Repositories extends Component{
         //         let lastUpdated = moment(rep.updated_at).fromNow();
                 
         //         return(
-        //           <div key={rep.id} class="repo-items">
+        //           <div key={rep.id} className="repo-items">
         //           <h2>{rep.name}</h2>
         //           <p>{rep.description}</p>
-        //           <p class="updated-date">{lastUpdated}</p>
+        //           <p className="updated-date">{lastUpdated}</p>
         //       </div>
         //         );
                 
@@ -72,31 +76,31 @@ class Repositories extends Component{
         // }
 
         return (
-          <div class="flex-item-right">
-            <div class="nav-bar">
+          <div className="flex-item-right">
+            <div className="nav-bar">
               <ul>
                   <li>
                       <a href="#home">Overview</a>
                   </li>
                   <li>
                       <a href="#news">Repositories
-                          <span class="count">{this.state.repoCount}</span></a>
+                          <span className="count">{this.state.followers}</span></a>
                   </li>
                   <li>
                       <a href="#contact">Stars
-                          <span class="count">5</span></a>
+                          <span className="count">5</span></a>
                   </li>
                   <li>
                       <a href="#about">followers
-                          <span class="count">{this.props.repositoriesData.followers}</span></a>
+                          <span className="count">{this.props.repositoriesData.followers}</span></a>
                   </li>
                   <li>
                       <a href="#about">following
-                          <span class="count">{this.props.repositoriesData.following}</span></a>
+                          <span className="count">{this.props.repositoriesData.following}</span></a>
                   </li>
               </ul>
             </div>
-            <div class="search-bar">
+            <div className="search-bar">
 
             <input value= {this.state.text}
                 onChange={(e) => this.setState({ text: e.target.value })} name="search" type="text" />
@@ -122,7 +126,7 @@ class Repositories extends Component{
                         <option value="">HTML</option>
                     </select>
 
-                <button class="new-btn">New</button>
+                <button className="new-btn">New</button>
             </div>
             <div>
                 {repositorie}
